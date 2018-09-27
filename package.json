@@ -1,13 +1,14 @@
 {
   "name": "mini-editor",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "lib/index.js",
   "author": "毛庭峰 <hzmaotingfeng@corp.netease.com>",
   "license": "MIT",
   "scripts": {
-      "build": "babel src -d lib"
-  } ,
+    "build": "babel src -d lib"
+  },
   "devDependencies": {
-    "babel-cli": "^6.26.0"
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0"
   }
 }
