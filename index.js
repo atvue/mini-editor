@@ -1,3 +1,3 @@
 
 
-export { default } from './lib/index'
+export { default } from './src/index'

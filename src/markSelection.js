@@ -1,13 +1,13 @@
 // https://stackoverflow.com/questions/1589721/how-can-i-position-an-element-next-to-user-text-selection/1589912#1589912
 
-var markSelection = function () {
+var markSelection = (function() {
     var markerTextChar = "\ufeff";
     var markerTextCharEntity = "&#xfeff;";
 
-    var markerEl,
+    var markerEl ,
         markerId = "sel_" + new Date().getTime() + "_" + Math.random().toString().substr(2);
 
-    return function () {
+    return function() {
         var sel, range;
 
         if (document.selection && document.selection.createRange) {
@@ -42,26 +42,26 @@ var markSelection = function () {
             // Create the marker element containing a single invisible character using DOM methods and insert it
             markerEl = document.createElement("span");
             markerEl.id = markerId;
-            markerEl.appendChild(document.createTextNode(markerTextChar));
+            markerEl.appendChild( document.createTextNode(markerTextChar) );
             range.insertNode(markerEl);
         }
 
         // Find markerEl position http://www.quirksmode.org/js/findpos.html
         var obj = markerEl;
-        var left = 0,
-            top = 0;
+        var left = 0, top = 0;
         do {
             left += obj.offsetLeft;
             top += obj.offsetTop;
-        } while (obj = obj.offsetParent);
+        } while ( obj = obj.offsetParent )
 
-        markerEl.parentNode.removeChild(markerEl);
+        markerEl.parentNode.removeChild( markerEl )
 
         return {
-            left,
-            top
-        };
-    };
-}();
+            left ,
+            top ,
+        }
+    }
+})()
 
-export default markSelection;
+
+export default markSelection

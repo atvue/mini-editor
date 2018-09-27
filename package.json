@@ -3,5 +3,11 @@
   "version": "1.0.0",
   "main": "index.js",
   "author": "毛庭峰 <hzmaotingfeng@corp.netease.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+      "build": "babel src -d lib"
+  } ,
+  "devDependencies": {
+    "babel-cli": "^6.26.0"
+  }
 }
