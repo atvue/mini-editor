@@ -16,6 +16,7 @@ function MiniEditor( ele , config = defaultConfig ) {
     this.popShow = this.popShow.bind( this )
     this.globalClick = this.globalClick.bind( this )
     this.editorInput = this.editorInput.bind( this )
+    this.clickDispatch2Pop = this.clickDispatch2Pop.bind( this )
 
     this.editorWrapper = ele
     this.editorDom = undefined
@@ -47,6 +48,7 @@ const MiniEditorProtoType = {
     // 销毁
     destory(){
         this.unBindEvents()
+        this.unBindPopEvents()
         this.mouseUp = undefined
         this.popShow = undefined
         this.globalClick = undefined

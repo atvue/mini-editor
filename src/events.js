@@ -22,7 +22,21 @@ export default {
         this.popShow( event )
     } ,
     globalClick( event ){
-        this.clickDispatch2Pop( event )
+        let { editorPop } = this ,
+            hasPop = editorPop !== undefined
+        if ( hasPop ) {
+            let { target } = event ,
+                inPop = editorPop.contains( target )
+            if ( !inPop ) {
+                // fix 执行commands，点击空白处，pop不消失的bug
+                setTimeout( () => {
+                    let selectedTxt = this.isSelectedTxt()
+                    if ( !selectedTxt ) {
+                        this.serInVisible( '全局点击' )
+                    }
+                } , 0 )
+            }
+        }
     } ,
     editorInput( event ){
         this.fire( 'input' , event.target.innerHTML )

@@ -38,6 +38,7 @@ export default {
         editorPop.innerHTML = this.getToolBar()
         editorWrapper.appendChild( editorPop )
         this.editorPop = editorPop
+        this.bindPopEvents()
     } ,
     setVisible(){
         let { editorPop } = this
@@ -110,49 +111,50 @@ export default {
         if ( colors ) {
             colors.forEach( color => {
                 colorHtml += `
-                    <span class="${clsToolCommand} ${clsColor}" data-color="${color}">
+                    <span class="${clsToolCommand} ${clsColor}" data-color="${color}" data-command="color">
                         <i style="background-color:${color}"></i>
                     </span>
                 `
             } )
         }
         return `
-            <span class="${clsToolCommand} ${clsBold}">
+            <span class="${clsToolCommand} ${clsBold}" data-command="bold">
                 <i>B</i>
             </span>
             ${colorHtml}
         `
+    } ,
+    bindPopEvents(){
+        let { editorPop } = this
+        if ( editorPop ) {
+            editorPop.addEventListener( 'mousedown' , this.clickDispatch2Pop )
+        }
+    } ,
+    unBindPopEvents(){
+        let { editorPop } = this
+        if ( editorPop ) {
+            editorPop.removeEventListener( 'mousedown' , this.clickDispatch2Pop )
+        }
     } ,
     clickDispatch2Pop( event ) {
         let { editorPop } = this ,
             hasPop = editorPop !== undefined
         if ( hasPop ) {
             let { target } = event ,
-                inPop = editorPop.contains( target )
-            if ( inPop ) {
-                let { classList } = target ,
-                    isBold = classList.contains( clsBold ) ,
-                    isColor = classList.contains( clsColor )
-                if ( isBold ) {
-                    commands.bold()
-                }
+                { classList , dataset: { command } } = target ,
+                isColor = classList.contains( clsColor ) ,
+                handler = commands[ command ]
+            if ( handler ) {
+                let args
                 if ( isColor ) {
-                    let { dataset: { color } } = target ,
-                        hasColor = color !== undefined
-                    if ( hasColor ) {
-                        commands.color( color )
-                    }
+                    let { dataset: { color } } = target
+                    args = color
                 }
-                this.checkToolActive()
-            } else {
-                // fix 执行commands，点击空白处，pop不消失的bug
-                setTimeout( () => {
-                    let selectedTxt = this.isSelectedTxt()
-                    if ( !selectedTxt ) {
-                        this.serInVisible( '全局点击' )
-                    }
-                } , 0 )
+                handler( args )
             }
+            this.checkToolActive()
         }
+        event.stopPropagation()
+        event.preventDefault()
     }
 }
