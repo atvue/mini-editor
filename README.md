@@ -1,10 +1,11 @@
 # mini-editor
 ```javascript
-let richEditorInstance = new RichEditor( richEle )
+import MiniEditor from 'mini-editor'
+let me = new MiniEditor( richEle )
 // 监听输入事件
-richEditorInstance.on( 'input' , this.changeValue )
+me.on( 'input' , this.changeValue )
 // 设置富文本的值
-richEditorInstance.content( value )
+me.content( value )
 // 只读模式
-richEditorInstance.disable( true )
+me.disable( true )
 ```
