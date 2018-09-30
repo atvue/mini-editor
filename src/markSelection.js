@@ -1,4 +1,5 @@
 // https://stackoverflow.com/questions/1589721/how-can-i-position-an-element-next-to-user-text-selection/1589912#1589912
+import { clsRichEditor } from './variables'
 
 var markSelection = (function() {
     var markerTextChar = "\ufeff";
@@ -48,14 +49,22 @@ var markSelection = (function() {
 
         // Find markerEl position http://www.quirksmode.org/js/findpos.html
         var obj = markerEl;
-        var left = 0, top = 0;
+        var left = 0 ,
+            top = 0
         do {
-            left += obj.offsetLeft;
-            top += obj.offsetTop;
-        } while ( obj = obj.offsetParent )
-
-        markerEl.parentNode.removeChild( markerEl )
-
+            let ele = obj.offsetParent
+            if ( ele ) {
+                left += obj.offsetLeft
+                top += obj.offsetTop
+                if ( ele.classList.contains( clsRichEditor ) ) {
+                    obj = false
+                } else {
+                    obj = ele
+                }
+            } else {
+                obj = false
+            }
+        } while ( obj )
         return {
             left ,
             top ,

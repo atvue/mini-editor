@@ -3,7 +3,7 @@
 export default {
     colors: [
         '#333333' ,
-        '#EF8D2A' ,
+        'rgb(235, 93, 11)' ,
         '#666666' ,
     ]
 }

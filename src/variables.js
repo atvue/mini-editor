@@ -1,6 +1,6 @@
 
 
-export const logMsg = true
+export const logMsg = false
 
 export const clsRichEditor = 'mini-rich-editor'
 

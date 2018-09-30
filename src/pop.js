@@ -91,16 +91,13 @@ export default {
         let { editorDom , editorPop } = this ,
             popRect = editorPop.getBoundingClientRect() ,
             { width: popW , height: popH } = popRect ,
-            editorRect = editorDom.getBoundingClientRect() ,
             { scrollTop } = editorDom ,
-            { x: editorRectX , y: editorRectY } = editorRect ,
-            { left: windowX , top: windowY } = utils.pageOffset() ,
             { left , top } = markSelection() ,
-            x = left - editorRectX ,
-            y = top - editorRectY - scrollTop
+            x = left ,
+            y = top - scrollTop
 
-        x -= ( popW / 2 + windowX )
-        y -= ( popH + 10 + windowY ) // padding-bottom 10
+        x -= ( popW / 2 )
+        y -= ( popH + 10 ) // padding-bottom 10
         return {
             x ,
             y ,
