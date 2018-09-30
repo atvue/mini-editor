@@ -65,6 +65,9 @@ var markSelection = (function() {
                 obj = false
             }
         } while ( obj )
+
+        markerEl.parentNode.removeChild( markerEl )
+
         return {
             left ,
             top ,
