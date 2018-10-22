@@ -19,7 +19,13 @@ export default {
         }
     } ,
     mouseUp( event ){
-        this.popShow( event )
+        let { editorDom } = this
+        if ( editorDom ) {
+            let { target } = event
+            if ( editorDom.contains( target ) ) {
+                this.popShow( event )
+            }
+        }
     } ,
     globalClick( event ){
         let { editorPop } = this ,
