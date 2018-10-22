@@ -45,6 +45,22 @@ export default {
         }
     } ,
     editorInput( event ){
+        this.isNeedClearBr()
         this.fire( 'input' , event.target.innerHTML )
+    } ,
+    isNeedClearBr(){
+        let { editorDom } = this ,
+            flag = false ,
+            onlyOneChild = editorDom.childNodes.length === 1
+        if ( onlyOneChild ) {
+            let child = editorDom.childNodes[ 0 ] ,
+                { tagName } = child
+            if ( tagName && tagName.toLowerCase() === 'br' ) {
+                flag = true
+            }
+        }
+        if ( flag ) {
+            editorDom.childNodes[ 0 ].remove()
+        }
     }
 }

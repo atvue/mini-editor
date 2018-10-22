@@ -26,7 +26,9 @@
 
 ```javascript
 import MiniEditor from 'mini-editor'
-let me = new MiniEditor( document.querySelector('#richEle') )
+let me = new MiniEditor( document.querySelector('#richEle') , {
+        placeholder: '请输入姓名' ,
+    } )
 // 监听输入事件
 me.on( 'input' , this.changeValue )
 // 设置富文本的值
@@ -34,3 +36,5 @@ me.content( value )
 // 只读模式
 me.disable( true )
 ```
+
+> placeholder样式设置,参考[Placeholder support for contentEditable elements, without JavaScript](https://codepen.io/flesler/pen/AEIFc)。第三点，chrome的br问题，插件已经支持自动检测清理br

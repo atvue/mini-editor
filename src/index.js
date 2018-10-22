@@ -43,7 +43,20 @@ const MiniEditorProtoType = {
         this.editorDom = editorDom
         // 绑定事件
         this.bindEvents()
+        // 绑定placeholder
+        this.initPlaceholder()
         editorWrapper.__mini_rich_editor_init = true
+    } ,
+    initPlaceholder(){
+        let { config: { placeholder } } = this
+        this.setPlaceholder( placeholder )
+    } ,
+    setPlaceholder( placeholder ) {
+        let { editorDom } = this ,
+            hasPlaceholder = placeholder !== undefined && placeholder !==null && placeholder.trim() !== ''
+        if ( hasPlaceholder && editorDom ) {
+            editorDom.setAttribute( 'placeholder' , placeholder )
+        }
     } ,
     // 销毁
     destory(){
