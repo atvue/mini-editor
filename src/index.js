@@ -1,7 +1,7 @@
 import events from './events'
 import pop from './pop'
 import { clsRichEditor , log } from './variables'
-import defaultConfig from './config'
+import defaultConfig , { fixConfig } from './config'
 import miniEvents from './miniEvents'
 /**
  * 
@@ -21,7 +21,7 @@ function MiniEditor( ele , config = defaultConfig ) {
     this.editorWrapper = ele
     this.editorDom = undefined
     this.editorPop = undefined
-    this.config = config
+    this.config = fixConfig( config )
     this.init()
     Object.assign( this , miniEvents() )
 }
