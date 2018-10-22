@@ -26,6 +26,10 @@
         &[contenteditable=false] {
             background-color: #eee ;
         }
+        // 加粗样式
+        b {
+            font-weight: bold ;
+        }
     }
     .mini-rich-editor-pop-wrapper {
         display: none ;
