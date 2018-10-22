@@ -6,7 +6,7 @@
 
 执行：`yarn link `
 
-执行：`yarn build`，和自动转译`src`目录中的es6文件
+执行：`yarn build`，会自动监听并转译`src`目录中的es6文件
 
 ------
 
@@ -17,6 +17,8 @@
 - `yarn link mini-editor`
 
 - `项目源文件`引入`mini-editor`，`import MiniEditor from 'mini-editor'`
+
+
 
 
 
