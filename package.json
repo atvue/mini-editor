@@ -1,8 +1,8 @@
 {
   "name": "mini-editor",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "main": "lib/index.js",
-  "author": "毛庭峰 <hzmaotingfeng@corp.netease.com>",
+  "author": "happy <mtingfeng@gmail.com>",
   "license": "MIT",
   "scripts": {
     "build": "babel src -d lib --watch"
