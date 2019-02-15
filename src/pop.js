@@ -121,8 +121,11 @@ export default {
             <span class="${clsToolCommand} ${clsBold}" data-command="bold">
                 <i>B</i>
             </span>
+            <span class="${clsToolCommand} ${clsBold}" data-command="link">
+                <i>A</i>
+            </span>
             ${colorHtml}
-        `
+        `;
     } ,
     bindPopEvents(){
         let { editorPop } = this
