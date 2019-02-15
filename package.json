@@ -1,5 +1,5 @@
 {
-  "name": "mini-editor",
+  "name": "@bview/mini-editor",
   "version": "0.0.0",
   "main": "lib/index.js",
   "author": "happy <mtingfeng@gmail.com>",
