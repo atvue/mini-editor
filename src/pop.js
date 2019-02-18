@@ -121,7 +121,7 @@ export default {
             <span class="${clsToolCommand} ${clsBold}" data-command="bold">
                 <i>B</i>
             </span>
-            <span class="${clsToolCommand} ${clsBold}" data-command="link">
+            <span class="${clsToolCommand} ${clsLink}" data-command="link">
                 <i>Link</i>
             </span>
             ${colorHtml}
