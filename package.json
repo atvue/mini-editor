@@ -1,6 +1,6 @@
 {
   "name": "@bview/mini-editor",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "main": "lib/index.js",
   "author": "毛庭峰 <hzmaotingfeng@corp.netease.com>",
   "license": "MIT",

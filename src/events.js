@@ -1,4 +1,5 @@
 
+import commands from './commands'
 
 export default {
     // 绑定事件
@@ -8,6 +9,7 @@ export default {
         let { editorDom } = this
         if ( editorDom ) {
             editorDom.addEventListener( 'input' , this.editorInput )
+            editorDom.addEventListener( 'paste' , this.pasteHandler )
         }
     } ,
     unBindEvents(){
@@ -16,6 +18,7 @@ export default {
         let { editorDom } = this
         if ( editorDom ) {
             editorDom.removeEventListener( 'input' , this.editorInput )
+            editorDom.removeEventListener( 'paste' , this.pasteHandler )
         }
     } ,
     mouseUp( event ){
@@ -48,6 +51,18 @@ export default {
         this.isNeedClearBr()
         this.fire( 'input' , event.target.innerHTML )
     } ,
+    pasteHandler (event) {
+        var plainHTML = event.clipboardData.getData('text/plain'); // 获取纯文本格式
+        // 如果符合url规范，则自动转化为a标签执行link命令
+        if (
+            /(http|https):\/\/[\w\-_]+(\.[\w\-_]+)+([\w\-\.,@?^=%&:/~\+#]*[\w\-\@?^=%&/~\+#])?/g.test(
+                plainHTML
+            )
+        ) {
+            commands.link(plainHTML);
+            event.preventDefault();
+        }
+    },
     isNeedClearBr(){
         let { editorDom } = this ,
             flag = false ,

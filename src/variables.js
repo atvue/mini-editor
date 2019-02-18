@@ -26,3 +26,5 @@ export const clsColor = 'tool-color'
 export const clsToolCommand = 'tool-command'
 
 export const clsActive = 'active'
+
+export const clsLink = 'tool-link'

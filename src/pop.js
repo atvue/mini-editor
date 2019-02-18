@@ -1,4 +1,4 @@
-import { clsPopWrapper , log , clsBold , clsColor , clsToolCommand , clsActive } from './variables'
+import { clsPopWrapper , log , clsBold , clsLink, clsColor , clsToolCommand , clsActive } from './variables'
 import { isNumber } from './check'
 import markSelection from './markSelection'
 import utils from './utils'
@@ -122,7 +122,7 @@ export default {
                 <i>B</i>
             </span>
             <span class="${clsToolCommand} ${clsBold}" data-command="link">
-                <i>A</i>
+                <i>Link</i>
             </span>
             ${colorHtml}
         `;

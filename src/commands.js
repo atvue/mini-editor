@@ -13,15 +13,18 @@ export default {
         document.execCommand( 'foreColor' , false , color )
     } ,
     link( url ) {
-        var text = window.getSelection().toString();
-        // @NOTE 简单的格式检查
-        if (!/^(http|https):\/\//g.test(text)) {
-            url = `//${text}`;
+        var rUrl = url !== undefined ? url : window.getSelection().toString(),
+            rUrl = rUrl.trim(),
+            text = rUrl;
+        // @NOTE 简单的格式补充
+        if (!/^(http|https):\/\//g.test(rUrl)) {
+            rUrl = `//${rUrl}`;
         }
+        // addLink命令无法实现在新窗口打开，使用insertHTML, IE浏览器不支持
         document.execCommand(
             'insertHTML',
             false,
-            `<a href="${url}" target="_blank">${text}</a>`
+            `<a href="${rUrl}" target="_blank">${text}</a>`
         );
     }
 }
