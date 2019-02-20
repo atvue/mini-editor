@@ -28,7 +28,9 @@
             display: block ; /* For Firefox */
         }
         &[contenteditable=false] {
-            background-color: #eee ;
+            // background-color: #eee ;
+            // 增加背景色会影响用户输入的样式背景
+            cursor: not-allowed;
         }
         // 加粗样式
         b {

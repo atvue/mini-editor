@@ -52,14 +52,17 @@ export default {
         this.fire( 'input' , event.target.innerHTML )
     } ,
     pasteHandler (event) {
-        var plainHTML = event.clipboardData.getData('text/plain'); // 获取纯文本格式
-        // 如果符合url规范，则自动转化为a标签执行link命令
+        var plainHTML = event.clipboardData.getData('text/plain'),
+            fmPlainHTML = plainHTML.replace(/\s/g, '');
+        // 获取纯文本格式
+        // 如果全文本符合url规范，则自动转化为a标签执行link命令
+        // 粘贴的一段文本中有url，不做处理
         if (
-            /(http|https):\/\/[\w\-_]+(\.[\w\-_]+)+([\w\-\.,@?^=%&:/~\+#]*[\w\-\@?^=%&/~\+#])?/g.test(
-                plainHTML
+            /^(http|https):\/\/[\w\-_]+(\.[\w\-_]+)+([\w\-\.,@?^=%&:/~\+#]*[\w\-\@?^=%&/~\+#])?$/.test(
+                fmPlainHTML
             )
         ) {
-            commands.link(plainHTML);
+            commands.link(fmPlainHTML);
             event.preventDefault();
         }
     },
